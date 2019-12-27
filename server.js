@@ -95,7 +95,7 @@ app.use(require('./routes/addQuestion'));
 app.use(require('./routes/ansRequest'));
 app.use(require('./routes/addUnfollowing'));
 
-port = process.env.PORT || 3000
+port = process.env.PORT || 80
 app.listen(port);
 
 console.log('Server is listening');
