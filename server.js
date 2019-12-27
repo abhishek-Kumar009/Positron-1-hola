@@ -69,7 +69,7 @@ app.use(passport.session());
 
 app.use(logger('dev'));
 
-app.locals.baseURL = "18.191.24.211/"
+app.locals.baseURL = "http://localhost:3000/"
 
 app.use(require('./routes/loginmiddlewares').addTemplate);
 app.use(require('./routes/search'));
