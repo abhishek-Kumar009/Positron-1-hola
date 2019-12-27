@@ -1,0 +1,10 @@
+{
+    "connectionString": "mongodb://localhost/node-mongo-registration-login-api",
+    "secret": "MY CAT IS FUCKING HOT",
+    "OAUTH2_CLIENT_ID": "529127569277-q6voo11laarcag0jr3stkelqhnsqfgqc.apps.googleusercontent.com",
+    "OAUTH2_CLIENT_SECRET": "sY5liCr-jZO_J293LEi321Dt",
+    "OAUTH2_CALLBACK": "https://intense-escarpment-17261.herokuapp.com/auth/google/callback",
+    "google_username":"positron.eduventures@gmail.com",
+    "google_password":"Positron+98712",
+    "client_url":"http://18.224.151.146:3000/"
+}

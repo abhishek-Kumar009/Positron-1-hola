@@ -1,0 +1,572 @@
+
+    <style type="text/css">
+      .placeholder
+        {
+          color: #aaa;
+        }
+    </style>
+    <form id="frmsignup" method="post" action="" >
+    <!-- signup modal -->
+    <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-body entryModal">
+            <div class="text-center m-b-sm">
+              <h4 class="m-b">Join the community now!</h4>
+              <button class="btn googleLogin" onclick="window.location='<%=baseURL%>auth/google'"><img src="<%=baseURL%>assets/images/google.png"/> Login with Google</button>
+              <div class="m-t-sm">
+                Existing member? <a href="<%=baseURL%>auth/login">Login</a>
+              </div>
+            </div>
+            <div class="text-center login-box">
+              <h5 class="m-b-lg">Or Create your profile..</h5>
+              <div class="align-center" style="max-width: 360px;">
+                <div class="form-group display-flex v-center">
+                  <div style="max-width: 49%;"><input type="text" name="firstname" class="form-control" placeholder="First Name"/></div>
+                  <div style="max-width: 49%;" class="m-l-xs"><input type="text" name="lastname" class="form-control" placeholder="Last Name"/></div>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="email" class="form-control" placeholder="Email" required/>
+                </div>
+                <div class="form-group">
+                  <input type="text" name="username" class="form-control" placeholder="Username" required/>
+                </div>
+                <div class="form-group">
+                  <input type="password" name="password" class="form-control" placeholder="Password" required/>
+                </div>
+                <div class="form-group">
+                  <input type="password" name="confirmation_password" class="form-control" placeholder="Confirm Password" required/>
+                </div>
+                <div class="form-group">
+                  <select class="form-control" name="branch" style="max-width: 49%">
+
+                  <% branches.forEach(branch => { %>
+                    <option value="<%=branch._id%>"><%=branch.name%></option>
+                  <% }); %>
+                  <!-- <option value="computers">Computer Science</option>
+                  <option value="electrical">Electrical</option>
+                  <option value="electronics">Electronics</option>
+                  <option value="mechanical">Mechanical</option>
+                  <option value="civil">Civil</option>••• -->
+                  </select>
+                  </div>
+                <!-- <div class="form-group text-gray">
+                  <div class="m-b-xs">Are you an engineering aspirant?</div>
+                  <label class="m-b-none">
+                    <input name="aspirant" type="radio" value="yes"/> Yes
+                  </label>
+                  <label class="m-l-sm m-b-none">
+                    <input name="aspirant" type="radio" value="no" /> No
+                  </label>
+                </div> -->
+                <div class="form-group text-gray">
+                  <label class="m-b-none">
+                    <input name="terms" type="checkbox" required/>
+                    I've read and understood the <a href="#">Terms and Conditions</a>
+                  </label>
+                </div>
+                <div class="">
+                    <small id="errmsg"></small>
+                  <button type='submit' class="btn btn-outline-dark btn-width-120">Continue to Sign up</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    </form>
+    <!--  personalised learning -->
+    <form method="post" action="" >
+    <div class="modal fade" id="customizedLearningModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="modal-body entryModal">
+            <div class="text-center m-b-sm">
+              <h4 class="m-b">Let us personalized your learning</h4>
+              <!-- <button class="btn googleLogin"><img src="assets/images/google.png"/> Login with Google</button> -->
+            </div>
+            <!-- <div class="text-center login-box">
+              <h5 class="m-b-lg" style="color: #4B4B4B;font-weight: normal;">Select your ongoing chapters</h5>
+              <div class="additionalDetails m-t text-gray" style="padding: 0 0 0 40px;">
+            <div class="display-flex m-t v-center">
+                  <label>Physics</label>
+                  <div class="flex-grow-1">
+                    <select id="physics" name="physics" class="form-control">
+                        <option>Select Chapter</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="display-flex m-t v-center">
+                  <label>Chemistry</label>
+                  <div class="flex-grow-1">
+                      <select id="chemistry" name="chemistry" class="form-control">
+                        <option>Select Chapter</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="display-flex m-t v-center">
+                  <label>Maths</label>
+                  <div class="flex-grow-1">
+                    <select id="mathematics" name="mathematics" class="form-control">
+                        <option>Select Chapter</option>
+                    </select>
+                  </div>
+                </div>
+              </div> -->
+              <div class="m-t-md">
+                <!-- <button class="btn btn-outline-gray btn-width-120">Go Back</button> -->
+                <button class="btn btn-outline-dark btn-width-120">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <!-- </div> -->
+    </form>
+
+    <div class="modal fade" id="addQuestionModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="display-flex v-center post-details">
+              <div class="user-icon"><img src="<%=baseURL%>assets/images/boy.png"/></div>
+              <div class="m-l-sm">
+                <div class="user-name">
+                  <%
+
+                    var heading = "";
+                    if(user){
+
+                      if(user.firstname)
+                        heading = user.firstname ;
+                      else
+                        heading = user.username ;
+                    }
+
+                  %>
+                  <%= heading %></div>
+
+              </div>
+              <div class="align-right text-gray hide-sm" id="draft"></div>
+            </div>
+            <form method="post" action="" id="frmQuestions">
+            <div class="mainQuestion firstView">
+              <input type="hidden" name="askedBy" value="<%= user?user._id : 0 %>">
+              <input type="hidden" id="questionDescription" name="questionDescription">
+              <div class="errmsg"></div>
+              <div class="m-t">
+<textarea class="form-control" name="questionHeading" id="questionHeading" rows="4" cols="1" placeholder="Type your question" required></textarea>
+              </div>
+              <div class="m-t">
+                <textarea class="form-control" id="textEditor" rows="4" cols="1" placeholder="Add details" required></textarea>
+              </div>
+            </div>
+
+            <div class="otherDetails secondView">
+              <h4 class="m-t questionhdr">When an unknown printer took a galley of type and scrambled it to make, when an unknown printer took a galley of type and scrambled it to make?</h4>
+              <div class="post-content text-gray questiondesc">
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </p>
+                <div class="attachment-status"><img src="<%=baseURL%>assets/images/picture.png"/> +2 Attachments</div>
+              </div>
+              <div class="additionalDetails m-t b-t b-b text-gray">
+                  <h5 class="m-b">Add additional details</h5>
+                  <div class="display-flex m-t v-center">
+                    <label>Subject</label><div class="flex-grow-1">
+                      <select id="subject" name="subject" class="form-control" required>
+                        <% if(user) { %>
+                          <% branch.subjects.forEach(subject => { %>
+                            <% console.log(subject.name) %>
+                            <option value="<%=subject._id%>"><%=subject.name%></option>
+                          <% }); %>
+                        <% } %>
+
+                        <!-- <option value="">Select Subject</option> <!--postman backend-->
+                        <!-- <option value="physics">Physics</option>
+                        <option value="chemistry">Chemistry</option> -->
+                        <!-- <option value="mathematics">Mathematics</option> -->
+                      </select>
+                    </div>
+                  </div>
+                  <!-- <div class="display-flex m-t v-center">
+                    <label>Chapter</label>
+                    <div class="flex-grow-1">
+                      <select id="chapter" name="chapter" class="form-control" required>
+                        <option value="">Select chapter</option>
+                      </select>
+                    </div>
+                    <div class="clearfix" id="loaderchapter" style="display: none;">
+                      <div class="spinner-border spinner-border-sm float-right" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="display-flex m-t v-center">
+                    <label>Topic</label>
+                    <div class="flex-grow-1">
+                      <select id="topic" name="topic" class="form-control" required>
+                        <option value="">Select topic</option>
+                      </select>
+                    </div> -->
+                    <div class="clearfix" id="loadertopic" style="display: none;">
+                      <div class="spinner-border spinner-border-sm float-right" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+              </div>
+              <div class="m-t display-flex v-center">
+                <div class="text-gray firstView"></div>
+                <div class="align-right">
+                  <button data-dismiss="modal" aria-label="Close" class="btn btn-outline-dark btn-width-120 firstView">Discard</button>
+                  <a href="#" onclick="goAdditional()" class="btn btn-primary btn-width-120 firstView" id="btnproceed">Proceed</a>
+                  <a href="#" onclick="goBackToEditor()" class="btn btn-outline-dark btn-width-120 secondView" id="btngoback">Go back</a>
+                  <button class="btn btn-primary btn-width-120 secondView">Submit</button>
+                </div>
+              </div>
+
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<%=baseURL%>javascripts/custom.js"></script>
+
+
+    <script type="text/javascript">
+
+
+       $(function() {
+
+
+            $( "form#frmAnswer" ).on( "submit", function( event ) {
+                event.preventDefault();
+
+                var formData = new FormData(this);
+
+                formData.append('answer', "'"+CKEDITOR.instances.answerEditor.getData()+"'");
+
+                formData.delete('answerEditor');
+
+                for (var pair of formData.entries()) {
+    console.log(pair[0]+ ', ' + pair[1]);
+}
+
+                $.ajax({
+                    url: '/post-answer/'+$('#questionId').val(),
+                    type: 'POST',
+                    processData: false,
+                    data:  formData
+                }).always(function (data) {
+                    console.log(data);
+
+                    if (data.status!=200 && data.responseJSON != null && data.responseJSON.message.length) {
+                      var str;
+                        for (var i = 0; i < data.responseJSON.message.length; i++) {
+                            if (data.responseJSON.message[i].msg)
+                              str += '<font color="red">'+data.responseJSON.message[i].msg+"</font><br>";
+                        }
+                        $("#errmsg").html(str);
+                        return false;
+                    }
+                    else{
+
+                        $("#frmAnswer").html('<font color="green" size="20">'+data.responseText+'</font>');
+                        //window.location=window.location.href;
+
+                      }
+                });
+
+                return false;
+            });
+
+             $( "form#frmQuestions" ).on( "submit", function( event ) {
+
+                event.preventDefault();
+                $.ajax({
+                    url: '/post-question',
+                    type: 'POST',
+                    dataType: 'json',
+                    data:  $( this ).serialize(),
+                    beforeSend: function(){
+                      // Show image container
+                      $("#loaderbtn").show();
+                     },
+                     complete:function(data){
+                        // Hide image container
+                        $("#loaderbtn").hide();
+                       }
+                }).always(function (data) {
+                    console.log(data);
+
+                    if (data.status!=200 && data.responseJSON != null && data.responseJSON.message.length) {
+                      var str;
+                        for (var i = 0; i < data.responseJSON.message.length; i++) {
+                            if (data.responseJSON.message[i].msg)
+                              str += '<font color="red">'+data.responseJSON.message[i].msg+"</font><br>";
+                        }
+                       $("#errmsg").html(str);
+                        return false;
+                    }
+                    else{
+
+                    $(".secondView").html(data.responseText);
+                    window.location="home";
+
+                  }
+                });
+
+                return false;
+
+            });
+
+            $( "form#frmsignup" ).on( "submit", function( event ) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/signup',
+                    type: 'POST',
+                    dataType: 'json',
+                    data:  $( this ).serialize()
+                }).always(function (data) {
+                    console.log(data);
+
+                    if (data.responseJSON != null && data.responseJSON.message.length) {
+                      var str;
+                        for (var i = 0; i < data.responseJSON.message.length; i++) {
+                            if (data.responseJSON.message[i].msg)
+                              str += '<font color="red">'+data.responseJSON.message[i].msg+"</font><br>";
+                        }
+                       $("#errmsg").html(str);
+                        return false;
+                    }
+                    else{
+                    if(data.email){
+                          sessionStorage.setItem('userid', data._id);
+                          sessionStorage.setItem('username', data.username);
+                          sessionStorage.setItem('email', data.email);
+                          sessionStorage.setItem('firstname', data.firstname);
+                          sessionStorage.setItem('lastname', data.lastname);
+                          $('#signupModal').modal('hide');
+                          window.location='<%=baseURL%>home';
+                          // return res.send("home.ejs");
+                    }
+                    else{
+                        $("#errmsg").html(data);
+                    }
+                  }
+                });
+
+                return false;
+            });
+
+            if ($('#textEditor').length)
+              initEditor('textEditor');
+            if ($('#answerEditor').length)
+              initEditor('answerEditor');
+
+            $.ajax({
+                url : "/chapters/physics",
+                type: "get"
+              }).done(function(response){ //
+                  console.log(response);
+                  if (response.length) {
+
+                    for (var i = 0; i < response.length; i++) {
+                       var option = $("<option />");
+                      option.html(response[i].name);
+
+                          //Set Customer CustomerId in Value part.
+                          option.val(response[i]._id);
+                          $('#physics').append(option);
+                    }
+
+                  }
+              });
+              $.ajax({
+                url : "/chapters/chemistry",
+                type: "get"
+              }).done(function(response){ //
+                  console.log(response);
+                  if (response.length) {
+
+                    for (var i = 0; i < response.length; i++) {
+                       var option = $("<option />");
+                      option.html(response[i].name);
+
+                          //Set Customer CustomerId in Value part.
+                          option.val(response[i]._id);
+                          $('#chemistry').append(option);
+                    }
+
+                  }
+              });
+              $.ajax({
+                url : "/chapters/mathematics",
+                type: "get"
+              }).done(function(response){ //
+                  console.log(response);
+                  if (response.length) {
+
+                    for (var i = 0; i < response.length; i++) {
+                       var option = $("<option />");
+                      option.html(response[i].name);
+
+                          //Set Customer CustomerId in Value part.
+                          option.val(response[i]._id);
+                          $('#mathematics').append(option);
+                    }
+
+                  }
+              });
+
+              //Code for Add Question Form Starts Below
+
+
+
+              $( '#subject').change(function() {
+
+                 $.ajax({
+                    url : "/chapters/"+$( "#subject" ).val(),
+                    type: "get",
+                    beforeSend: function(){
+                      // Show image container
+                      $("#loaderchapter").show();
+                     },
+                     complete:function(data){
+                        // Hide image container
+                        $("#loaderchapter").hide();
+                       }
+
+                  }).done(function(response){
+                      console.log(response);
+                      if (response.length) {
+                        $('#chapter').empty().append('<option value="">Select chapter</option>');
+                        $('#topic').empty().append('<option value="">Select topic</option>');
+                         for (var i = 0; i < response.length; i++) {
+
+                              var option = $("<option />");
+                              option.html(response[i].name);
+                              option.val(response[i]._id);
+
+                              $('#chapter').append(option);
+
+                          }
+
+                      }
+                      else
+                        $('#chapter').empty().append('<option value="">No chapters found</option>');
+                  });
+
+              });
+
+              $( '#chapter').change(function() {
+
+                 $.ajax({
+                    url : "/topics/"+$( "#chapter" ).val(),
+                    type: "get",
+                    beforeSend: function(){
+                      // Show image container
+                      $("#loadertopic").show();
+                     },
+                     complete:function(data){
+                        // Hide image container
+                        $("#loadertopic").hide();
+                       }
+                  }).done(function(response){ //
+                      console.log(response);
+                      if (response.length) {
+                        $('#topic').empty().append('<option value="">Select topic</option>');
+                         for (var i = 0; i < response.length; i++) {
+                             var option = $("<option />");
+                            option.html(response[i].name);
+
+                                //Set Customer CustomerId in Value part.
+                                option.val(response[i]._id);
+                                $('#topic').append(option);
+                          }
+
+                      }
+                      else
+                        $('#topic').empty().append('<option value="">No topics found</option>');
+                  });
+
+              });
+
+
+
+
+              $( '.follow').click(function() {
+                var followid = $(this).attr('id');
+                console.log(followid);
+                qid = followid.replace("follow","");
+
+                 $.ajax({
+                    url : "/add-following/"+qid,
+                    type: "get",
+                    beforeSend: function(){
+                      // Show image container
+                       $('#'+followid).html(' <div class="spinner-border spinner-border-sm text-dark"></div>');
+                     },
+                     complete:function(data){
+                        // Hide image container
+                         //$('#'+followid).html('');
+                       }
+                  }).done(function(response){ //
+                      console.log(response);
+                      if (response.length) {
+                         $('#'+followid).html('Unfollow');
+
+                      }
+                      else
+                        $('#'+followid).html('<font color="red">Something went wrong. Please try again!</font>');
+                  });
+
+              });
+
+            //autocomplete
+            var availableTags = [];
+            <%
+            if(user){
+              if (typeof questions != "undefined") {
+                for(var j=0; j < questions.length; j++){ %>
+                  availableTags.push('<%= questions[j].questionHeading %>');
+            <% } %>
+                autocompleteInit('#searchDoubt', availableTags);
+            <% } } %>
+
+
+
+
+         });
+           function showLabel(event, ui) {
+                window.location = '/search?text='+ui.item.label;
+            }
+         function encodeHtmlEntity(str) {
+          return str.replace(/[\u00A0-\u9999\<\>\&\'\"\\\/]/gim, function(c){
+            return '&#' + c.charCodeAt(0) + ';' ;
+          });
+
+        }
+
+
+    </script>
+
+
+  </body>
+</html>

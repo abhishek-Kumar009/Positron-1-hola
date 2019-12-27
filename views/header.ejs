@@ -1,0 +1,124 @@
+<header class="header">
+      <div class="container">
+        <div class="display-flex v-center">
+          <button onclick="navToggle()" class="navBtn">
+            <span></span><span></span><span></span>
+          </button>
+          <a class="navbar-brand" href="<%=baseURL%>"><img src="<%=baseURL%>assets/images/logo.png" alt="Logo"/></a>
+          <div class="navBar">
+            <button onclick="navToggle()" class="navClose">&times;</button>
+            <ul class="nav navMenu">
+              <li class="nav-item"><a class="nav-link" href="<%=baseURL%>home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="<%=baseURL%>trending">Trending</a></li>
+              <li class="nav-item"><a class="nav-link" href="<%=baseURL%>answer">Answer</a></li>
+            </ul>
+          </div>
+          <div class="align-right display-flex v-center">
+          <% if(!user){  %>
+            <button class="btn btn-outline" onclick="window.location='<%=baseURL%>auth/login'">Login</button>
+            <button class="btn btn-light" data-toggle="modal" data-target="#signupModal">Sign up</button>
+          <% } else{ %>
+            <div class="search-field">
+              <div class="input-group">
+                <div class="search-icon"><input type="text" id="searchDoubt" class="form-control" placeholder="Type your doubt"/></div>
+                <button class="btn add-btn" data-toggle="modal" data-target="#addQuestionModal"><span class="hide-xs">Add</span><span class="hide-web-sm">+</span></button>
+              </div>
+            </div>
+            <div class="notification relative">
+                <button class="btn bell-icon"><img src="<%=baseURL%>assets/images/bell.png"/><span class="alert-count">8</span></button>
+                <div class="notificationDropdown">
+                  <div class="display-flex v-center b-b">
+                    <ul class="m-b-none display-flex v-center alertTab nav" role="tablist">
+                      <li><a class="active" data-toggle="tab" href="#answerTab" role="tab" aria-controls="answerTab" aria-selected="false">Answer</a></li>
+                      <li><a data-toggle="tab" href="#tab1" role="tab" aria-controls="tab1" aria-selected="false">Tab-2</a></li>
+                      <li><a data-toggle="tab" href="#tab2" role="tab" aria-controls="tab2" aria-selected="false">Tab-3</a></li>
+                    </ul>
+                    <div class="align-right seeAll"><a href="#">See All</a></div>
+                  </div>
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="answerTab" role="tabpanel" aria-labelledby="answerTab-tab">
+                      <ul class="alertList">
+                        <li>
+                          <div class="post-time">3 hours ago</div>
+                          <p class="m-b-none">
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                          </p>
+                        </li>
+                        <li>
+                          <div class="post-time">3 hours ago</div>
+                          <p class="m-b-none">
+                              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                          </p>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="tab-pane fade" id="tab1" role="tabpanel" aria-labelledby="tab1-tab">
+                      <div class="wrapper-sm">
+                          <p>Tab 2 content</p>
+                      </div>
+                    </div>
+                    <div class="tab-pane fade" id="tab2" role="tabpanel" aria-labelledby="tab2-tab">
+                        <div class="wrapper-sm">
+                            <p>Tab 3 content here</p>
+                        </div>
+                    </div>
+                  </div>
+
+                  <div class="b-t text-center moreAlert">+2 More</div>
+                </div>
+            </div>
+
+            <%
+      var answerurl="auth/login";
+      var heading = "";
+      if(user){
+
+        if(user.firstname)
+          heading = user.firstname+" "+user.lastname ;
+        else
+          heading = "Hi "+user.username+"!" ;
+      }
+
+    %>
+
+            <div class="notification relative">
+               <div class="user-icon"><img src="<%=baseURL%>assets/images/girl.png"/>
+                <div class="notificationDropdown">
+                  <div class="display-flex v-center b-b">
+                    <ul class="m-b-none display-flex v-center alertTab nav" role="tablist">
+                     <li><a class="active" aria-controls="answerTab" aria-selected="false"><%= heading %></a></li>
+                    </ul>                    
+                  </div>
+                  <div class="tab-content">
+                    <div class="tab-pane fade show active" id="answerTab" role="tabpanel" aria-labelledby="answerTab-tab">
+                      <ul class="alertList">
+                        <li>
+                          <p class="m-b-none">
+                            My Profile
+                          </p>
+                        </li>
+                        <li><a href="#">
+                          <p class="m-b-none">
+                            My Answers
+                          </p>
+                        </a>
+                        </li>
+                        <li>
+                            Settings
+                          </li>
+                          <li><a href="/auth/logout">Logout</a>
+                              <!--logout functionality here-->
+                            </li>
+                      </ul>
+                    </div>
+                   
+            </div>
+            <!-- <div class="user-details relative hide-xs">
+                <div class="user-icon"><img src="<%=baseURL%>assets/images/girl.png"/></div>
+            </div> -->
+            <% } %>
+          </div>
+        </div>
+        </div>
+      </div>
+    </header>

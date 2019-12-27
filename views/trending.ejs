@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <title>Project</title>    
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+      <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+      <link rel="stylesheet" href="styles/custom.css" />
+
+  </head>
+  <body>
+    
+    <% include header %>
+     <%
+      var answerurl="auth/login";
+      var heading = "";
+      if(user){
+
+        if(user.firstname)
+          heading = "Hi "+user.firstname+"!" ;
+        else
+          heading = "Hi "+user.username+"!" ;
+      }
+
+    %>
+    <section class="section">
+        <div class="container container-sm">
+          <h4 class="welcome-title"> <%= heading %> Here are some top questions for you...</h4>
+          <% for(var i=0; i < questions.length; i++) { %>
+          <div class="white-bg post-block box-shadow">
+            <div class="display-flex v-center post-details">
+              <div class="user-icon"><img src="assets/images/girl.png"/></div>
+              <div class="m-l-sm">
+                <div class="user-name"><%= questions[i].askedBy.firstname+" "+questions[i].askedBy.lastname %></div>
+                <div class="post-time"><%= questions[i].datestring %></div>
+              </div>
+            </div>
+            <h4 class="m-t-sm m-b-none"><a href="#"><%= questions[i].questionHeading %></a></h4>
+            <div class="question-tags m-t-xs">
+              <span><%= questions[i].subject %></span> <span><%= questions[i].chapter.name %></span><span><%= questions[i].topic.name %></span>
+            </div>
+            <div class="post-content text-gray">
+              <%= questions[i].questionDescription %>
+              <div class="attachment-status"><img src="assets/images/picture.png"/> +2 Attachments</div>
+              <div class="post-footer display-flex v-center">
+                <ul class="display-flex v-center social-action-status">
+                  <li><span><%= questions[i].numAnswers %></span> Answers</li>
+                  <li><span>50</span> Followers</li>
+                  <li><span><%= questions[i].views %></span> Views</li>
+                </ul>
+                <ul class="display-flex v-center align-right social-action">
+                  <li><a href="questions-details.html"><img class="m-r-xs" src="assets/images/edit.png"/> Answer</a></li>
+                  <li>
+                                      <% if(user){ %>
+                    <% if(questions[i].isFollowed){ %>
+                      <a href="javascript:void(0)"><img class="m-r-xs" src="<%=baseURL%>assets/images/follow.png" style="margin-right: 0px; margin-top: -2px;"> <span id="follow<%= questions[i]._id %>"  class="follow">Unfollow</span></a>
+                    <% } else { %>  
+                    <a href="javascript:void(0)"><img class="m-r-xs" src="<%=baseURL%>assets/images/follow.png" style="margin-right: 0px; margin-top: -2px;"> <span id="follow<%= questions[i]._id %>"  class="follow">Follow</span></a>
+                    <% } }
+                    else{ %>
+
+                       <a href="auth/login"><img class="m-r-xs" src="<%=baseURL%>assets/images/follow.png" style="margin-right: 0px; margin-top: -2px;"> <span>Follow</span></a>
+                    <%
+                    }
+                    %>
+                  </li>
+                  <li><a href="#"><img src="assets/images/more.png"/></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          
+
+          
+  
+
+        </div>
+    </section>
+
+
+
+
+
+    
+     <% include footer %>

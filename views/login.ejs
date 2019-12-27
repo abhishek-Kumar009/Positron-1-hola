@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" href="favicon.ico" />
+    <title>Project</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="<%=baseURL%>styles/custom.css" />
+
+  </head>
+  <body>
+
+    <header class="header indexHeader">
+      <div class="container">
+        <div class="display-flex v-center">
+          <button onclick="navToggle()" class="navBtn">
+            <span></span><span></span><span></span>
+          </button>
+          <a class="navbar-brand" href=""><img src="../assets/images/logo.png" alt="Logo"/></a>
+          <div class="navBar">
+            <button onclick="navToggle()" class="navClose">&times;</button>
+            <ul class="nav navMenu">
+              <li class="nav-item"><a class="nav-link" href="home.php">Home</a></li>
+              <li class="nav-item"><a class="nav-link" href="home.php">Trending</a></li>
+              <li class="nav-item"><a class="nav-link" href="home.php">Answer</a></li>
+            </ul>
+          </div>
+          <div class="align-right display-flex v-center">
+            <button class="btn btn-outline" id="btnlogin" data-toggle="modal" data-target="#loginModal" data-backdrop="static" data-keyboard="false">Login</button>
+            <button class="btn btn-light" data-toggle="modal" data-target="#signupModal">Sign up</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="banner">
+      <div class="bannerCaption">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+                <div class="bannerTitle">Break the exam fever random stuff.</div>
+            </div>
+            <div class="col-md-7">
+              <p class="text tr3 fromBottom">So insisted received is occasion advanced honoured.
+                Among ready to which up. Attacks smiling and may out assured moments man nothing outward
+              </p>
+              <div class="ban-btn-wrap">
+                  <button  class="btn btn-start" onclick="window.location='signup'">Get Started</button>
+                  <button class="btn btn-watch">Watch Video <img class="tr3" src="<%=baseURL%>assets/images/play-lg.png"/></button>
+              </div>
+            </div>
+            <div class="col-md-5">
+              <div class="bannerImg"><img class="img-fluid" src="<%=baseURL%>assets/images/illustration.png"/></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mouseScroll goto" data-goto="practice"></div>
+    </section>
+
+
+    <!-- login modal -->
+    <div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content">
+            <button type="button" onclick="window.location='<%=baseURL%>''" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          <div class="modal-body entryModal">
+
+            <div class="text-center m-b-sm">
+             <h4 class="m-b" id="hdrlogin">Login</h4>
+              <button class="btn googleLogin" onclick="window.location='<%=baseURL%>auth/google'"><img src="<%=baseURL%>assets/images/google.png"/> Login with Google</button>
+            </div>
+            <form method="post" action="<%=baseURL%>auth/local" id="frmlogin">
+            <div class="text-center login-box">
+              <h5 class="m-b-lg">Login with username and password</h5>
+              <div class="align-center" style="max-width: 300px;">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="username" placeholder="Username" required />
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="Password" required/>
+                </div>
+                <div class="form-group">
+                  <a class="link-underline" href="#" id="btnforgotpass">Forgot password?</a>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-dark btn-width-120">Login</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <form method="post" action="" id="frmreset" style="display:none;">
+            <div class="text-center login-box">
+              <h5 class="m-b-lg">Reset Password</h5>
+              <div class="align-center" style="max-width: 300px;">
+
+                <div class="form-group">
+                  <input type="text" class="form-control" name="email" id="emailforreset" placeholder="email" required />
+                </div>
+                <div class="form-group">
+                  <a class="link-underline" href="#" id="btnbacktologin">Back to login</a>
+                </div>
+                <div class="">
+                  <button class="btn btn-outline-dark btn-width-120" id="btnreset">Submit</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <div class="errmsg"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="<%=baseURL%>javascripts/custom.js"></script>
+
+
+    <script type="text/javascript">
+       $(function() {
+           // bind 'myForm' and provide a simple callback function
+
+              $( "#btnlogin" ).click();
+
+                $('#btnbacktologin').click(function(){
+
+                    $('#frmreset').hide();
+                    $('#frmlogin').show();
+                    $('.googleLogin').show();
+                    $('#hdrlogin').html("Login");
+                });
+
+                $('#btnforgotpass').click(function(){
+
+                    $('#frmreset').show();
+                    $('#frmlogin').hide();
+                    $('.googleLogin').hide();
+                    $('#hdrlogin').html("Password Recovery");
+
+
+                });
+
+              $( "form#frmreset" ).on( "submit", function( event ) {
+                event.preventDefault();
+                $.ajax({
+                    url: '/reset-password',
+                    type: 'POST',
+                    dataType: 'json',
+                   data:  $( this ).serialize(),
+                  beforeSend: function(){
+                    // Show image container
+                    $("#btnreset").attr('disabled',true).html('<span class="spinner-border spinner-border-sm text-primary"></span> Loading..');
+                   },
+                   complete:function(data){
+
+                          $("#btnreset").attr('disabled',false).html('Submit');
+                          $('#emailforreset').val('');
+                          $('#frmreset').hide();
+                          $('#frmlogin').show();
+                          $('.googleLogin').show();
+                          $('#hdrlogin').html("Login");
+                     }
+                }).always(function (data) {
+                    console.log(data);
+
+                    if (data.status!=200 && data.responseJSON != null && data.responseJSON.message.length) {
+                      var str;
+
+                        $("#errmsg").html(str);
+                        return false;
+                    }
+                    else{
+
+                        $("#errmsg").html(data.responseText);
+
+                      }
+                });
+
+                return false;
+            });
+
+         });
+
+    </script>
+
+  </body>
+</html>
