@@ -69,7 +69,7 @@ app.use(passport.session());
 
 app.use(logger('dev'));
 
-app.locals.baseURL = "http://askspyra.com"
+app.locals.baseURL = "askspyra.com";
 
 app.use(require('./routes/loginmiddlewares').addTemplate);
 app.use(require('./routes/search'));
