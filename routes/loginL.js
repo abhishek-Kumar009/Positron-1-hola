@@ -4,13 +4,13 @@ const express=require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 const crypto=require('crypto');
-const hash=crypto.createHash('sha256');
 var User=require('./models').User;
 const ErrorHandler=require('../_helpers/error-handler');
 
 passport.use(new LocalStrategy(
   function(username, password, done) {
     console.log("reached inside local strategy");
+    const hash=crypto.createHash('sha256');
     hash.update(password);
     User.findOne({ username: username }, function (err, user) {
       if (err) { return done(err); }
