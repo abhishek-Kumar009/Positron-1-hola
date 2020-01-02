@@ -651,7 +651,7 @@ select:-webkit-autofill {
 }
 
 .login-box {
-    bell-icon border: 1px solid #ddd;
+    border: 1px solid #ddd;
     padding: 24px;
     margin-top: 24px;
 }
@@ -1420,8 +1420,8 @@ a.link-underline:hover {
         display: none;
     }
 
-    .form-control {
-        max-width: 150px;
+    .form-control-home-page {
+        max-width: 160px;
     }
 }
 
